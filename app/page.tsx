@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Logos from "@/components/Logos";

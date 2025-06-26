@@ -1,8 +1,7 @@
-"use client"
-import React, { useEffect, useState } from "react"
-import Image from "next/image"
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { baseURL } from "@/API/baseURL";
-
 
 interface LogoItem {
   id: number;
@@ -20,7 +19,7 @@ export default function Logos() {
         const response = await fetch(`${baseURL}/homedata`);
         const result = await response.json();
         if (result.logos) {
-          setLogos(result.logos); 
+          setLogos(result.logos);
         }
       } catch (error) {
         console.error("Error fetching logo data:", error);
@@ -31,6 +30,9 @@ export default function Logos() {
     fetchData();
   }, []);
 
+  if (loading == true) {
+    return <> Loading..</>;
+  }
   return (
     <section className="py-8 border-b border-gray-400">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-4">

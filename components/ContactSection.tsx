@@ -35,6 +35,10 @@ export default function ContactSection() {
     fetchAboutData();
   }, []);
 
+  if(loading == true){
+    return <> Loading..</>
+  }
+
   return (
     <section className="relative pt-16 mb-[-100px]">
       <div className="mx-auto max-w-7xl px-6">

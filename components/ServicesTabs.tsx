@@ -15,17 +15,18 @@ import { motion } from "framer-motion"; // Import framer-motion
 import { baseURL } from "@/API/baseURL";
 
 
-type ServiceKey =
-  | "custom-software-development"
-  | "web-and-app-development"
-  | "ai-and-machine-learning"
-  | "cloud-and-devops-solutions"
-  | "ui-ux-design"
-  | "ecommerce-development"
-  | "customer-support"
-  | "email-marketing"
-  | "live-chat-support"
-  | "digital-marketing-and-seo";
+// type ServiceKey =
+//   | "custom-software-development"
+//   | "web-and-app-development"
+//   | "ai-and-machine-learning"
+//   | "cloud-and-devops-solutions"
+//   | "ui-ux-design"
+//   | "ecommerce-development"
+//   | "customer-support"
+//   | "email-marketing"
+//   | "live-chat-support"
+//   | "digital-marketing-and-seo";
+
 type Breadcrumb = {
   label: string;
   href: string;

@@ -5,7 +5,7 @@ import Navbar2 from "@/components/Navbar2";
 import Hero2Section from "@/components/Hero2Section";
 import Footer2 from "@/components/Footer2";
 import Contact from "@/components/Contact";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import Script from "next/script";
 import { baseURL } from "@/API/baseURL";
 
@@ -50,7 +50,7 @@ import { baseURL } from "@/API/baseURL";
 //   },
 // };
 
-const contactpage = () => {
+const ContactPage = () => {
    const [imgPath, setImgPath] = useState("");
   useEffect(() => {
     const fetchPageData = async () => {
@@ -120,4 +120,4 @@ const contactpage = () => {
   );
 };
 
-export default contactpage;
+export default ContactPage;

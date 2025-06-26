@@ -4,13 +4,13 @@ import Topnav from "@/components/Topnav";
 import Footer2 from "@/components/Footer2";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Hero2Section from "@/components/Hero2Section";
-import BlogCard from "@/components/BlogCard";
-import Link from "next/link";
-import { blogData } from "@/lib/blogs";
 import LazyBlogCard from "@/components/LazyBlogCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "@/API/baseURL";
+// import BlogCard from "@/components/BlogCard";
+// import Link from "next/link";
+// import { blogData } from "@/lib/blogs";
 
 interface BlogItem {
   id: number;

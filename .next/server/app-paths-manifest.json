@@ -1,7 +1,11 @@
 {
-  "/contact/page": "app/contact/page.js",
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/404/page": "app/404/page.js",
   "/blogs/page": "app/blogs/page.js",
+  "/privacypolicy/page": "app/privacypolicy/page.js",
+  "/services/page": "app/services/page.js",
+  "/termsandconditions/page": "app/termsandconditions/page.js",
   "/about/page": "app/about/page.js",
-  "/services/page": "app/services/page.js"
+  "/contact/page": "app/contact/page.js",
+  "/page": "app/page.js"
 }

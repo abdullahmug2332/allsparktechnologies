@@ -1,11 +1,9 @@
 // app/about/page.tsx
-
-import { Metadata } from "next";
-import Script from "next/script";
-
+// import { Metadata } from "next";
 // Dynamically import the client component
+import Script from "next/script";
 import AboutClient from "@/components/AboutClient";
-import { useEffect, useState } from "react";
+
 
 // export const metadata: Metadata = {
 //   title: 'About AllSpark Technologies | US-Based Software Development & AI Company',

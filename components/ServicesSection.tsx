@@ -28,7 +28,6 @@ export default function ServicesSection() {
         const result = await response.json();
         if (result.homeServices) {
           setServices(result.homeServices);
-
         }
       } catch (error) {
         console.error("Error fetching logo data:", error);
@@ -40,10 +39,10 @@ export default function ServicesSection() {
   }, []);
 
   // Show first 4 by default, show all if 'showMore' is true
-const displayedServices = Array.isArray(services?.allServices) ? services.allServices.slice(0, 10) : [];
-console.log(displayedServices)
-
-
+  const displayedServices = Array.isArray(services?.allServices)
+    ? services.allServices.slice(0, 10)
+    : [];
+  console.log(displayedServices);
 
   // Basic animation variants for each card
   const cardVariants = {
@@ -64,6 +63,9 @@ console.log(displayedServices)
       },
     },
   };
+  if (loading == true) {
+    return <> Loading..</>;
+  }
 
   return (
     <motion.section
