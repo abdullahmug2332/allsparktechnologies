@@ -1,6 +1,8 @@
 "use client"; // Required for Next.js App Router
 
+import { baseURL } from "@/API/baseURL";
 import { PlayCircle } from "lucide-react"; // Lucide icons
+import { useEffect, useState } from "react";
 
 interface process {
   number: string;
@@ -8,32 +10,21 @@ interface process {
   description: string;
 }
 export default function ProcessSection() {
-  const data: process[] = [
-    {
-      number: "1",
-      title: "Planning & Strategy",
-      description:
-        "We start by understanding business requirements, defining objectives, and creating a roadmap. This phase includes market research, competitor analysis, and choosing the right tech stack for custom software development.",
-    },
-    {
-      number: "2",
-      title: "Design & Development",
-      description:
-        "Our team designs intuitive UI/UX and builds scalable software using full-stack software development practices. We follow agile methods, ensure seamless integration, and apply AI development for smarter automation.",
-    },
-    {
-      number: "3",
-      title: "Testing & Quality Assurance",
-      description:
-        "We perform comprehensive QA—including functionality, performance, security, and user testing. Our mix of automated/manual testing ensures compliance with top software development standards.",
-    },
-    {
-      number: "4",
-      title: "Optimization & Support",
-      description:
-        "After deployment, we provide ongoing monitoring, updates, and feature enhancements. Our software development agency USA also ensures post-launch support for long-term product success.",
-    },
-  ];
+  const [data,setData] = useState<process[] | null>(null)
+  useEffect(() => {
+      const fetchFAQData = async () => {
+        try {
+          const res = await fetch(`${baseURL}/homedata`);
+          const json = await res.json();
+          const processdata: process[] = json.process; 
+        setData(processdata); 
+        } catch (error) {
+          console.error("Error fetching FAQ data:", error);
+        }
+      };
+  
+      fetchFAQData();
+    }, []);
   return (
     <section className="relative py-28 mt-10">
       <div className=" ">
