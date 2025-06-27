@@ -52,6 +52,7 @@ import { baseURL } from "@/API/baseURL";
 
 const ContactPage = () => {
    const [imgPath, setImgPath] = useState("");
+   console.log(baseURL);
   useEffect(() => {
     const fetchPageData = async () => {
       try {

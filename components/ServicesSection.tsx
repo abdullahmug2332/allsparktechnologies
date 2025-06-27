@@ -42,7 +42,6 @@ export default function ServicesSection() {
   const displayedServices = Array.isArray(services?.allServices)
     ? services.allServices.slice(0, 10)
     : [];
-  console.log(displayedServices);
 
   // Basic animation variants for each card
   const cardVariants = {
