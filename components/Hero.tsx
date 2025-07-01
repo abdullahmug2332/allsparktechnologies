@@ -6,7 +6,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { baseURL } from "@/API/baseURL";
-
+import { useQuery } from "@tanstack/react-query";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -15,47 +15,45 @@ interface HeroData {
   features: string[];
 }
 
+const fetchHeroData = async (): Promise<HeroData> => {
+  const res = await fetch(`${baseURL}/homedata`);
+  const result = await res.json();
+  if (!result.hero) throw new Error("Hero data not found");
+  return result.hero;
+};
+
 export default function HeroSection() {
-  const [texts, setTexts] = useState<HeroData["texts"]>([]);
-  const [features, setFeatures] = useState<HeroData["features"]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentGridIndex, setCurrentGridIndex] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${baseURL}/homedata`);
-        const result = await response.json();
-        if (result.hero) {
-          setTexts(result.hero.texts || []);
-          setFeatures(result.hero.features || []);
-        }
-      } catch (error) { 
-        console.error("Error fetching hero data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<HeroData>({
+    queryKey: ["heroData"],
+    queryFn: fetchHeroData,
+  });
 
-  // Cycle text animation
+  // Text change interval
   useEffect(() => {
+    if (!data?.texts) return;
     const interval = setInterval(() => {
-      setCurrentTextIndex((prev) => (prev + 1) % (texts.length || 1));
+      setCurrentTextIndex((prev) => (prev + 1) % data.texts.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [texts.length]);
+  }, [data?.texts]);
 
-  // Cycle feature grid
-  const gridPageCount = Math.max(Math.ceil(features.length / 2), 1);
+  // Grid change interval
+  const gridPageCount = data ? Math.ceil(data.features.length / 2) : 1;
   useEffect(() => {
-    const gridInterval = setInterval(() => {
+    if (!data?.features) return;
+    const interval = setInterval(() => {
       setCurrentGridIndex((prev) => (prev + 1) % gridPageCount);
     }, 5000);
-    return () => clearInterval(gridInterval);
-  }, [gridPageCount]);
+    return () => clearInterval(interval);
+  }, [data?.features, gridPageCount]);
 
   const textVariants = {
     initial: { opacity: 0 },
@@ -83,10 +81,13 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative w-full xl:w-3/5 text-center md:text-start z-10">
-        {loading ? (
+        {isLoading ? (
           <h2 className="text-white text-xl">Loading...</h2>
+        ) : isError ? (
+          <h2 className="text-red-400 text-xl">Error: {(error as Error).message}</h2>
         ) : (
           <>
+            {/* Animated Headline */}
             <AnimatePresence mode="wait">
               <motion.h1
                 key={currentTextIndex}
@@ -96,11 +97,12 @@ export default function HeroSection() {
                 exit="exit"
                 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl !leading-normal"
               >
-                {texts[currentTextIndex]}
+                {data?.texts[currentTextIndex]}
+
               </motion.h1>
             </AnimatePresence>
 
-            {/* Feature Grid */}
+            {/* Animated Feature Grid */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentGridIndex + 2}
@@ -110,7 +112,7 @@ export default function HeroSection() {
                 exit="exit"
                 className="grid grid-cols-2 mx-auto md:mx-0 gap-6 w-fit mt-5 text-lg text-white"
               >
-                {features
+                {data?.features
                   .slice(currentGridIndex * 2, currentGridIndex * 2 + 2)
                   .map((feature, index) => (
                     <div key={index} className="flex items-center">

@@ -105,8 +105,7 @@ export default function Navbar2() {
                       <ul className="space-y-4 pl-2 mt-5 text-sm text-gray-700">
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "custom-software-development" },
+                            pathname: "/custom-software-development",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -121,8 +120,7 @@ export default function Navbar2() {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "web-and-app-development" },
+                            pathname: "/web-and-app-development",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -137,8 +135,7 @@ export default function Navbar2() {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ai-and-machine-learning" },
+                            pathname: "/ai-and-machine-learning",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -154,8 +151,7 @@ export default function Navbar2() {
 
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "cloud-and-devops-solutions" },
+                            pathname: "/cloud-and-devops-solutions",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300 "
                         >
@@ -170,8 +166,7 @@ export default function Navbar2() {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ui-ux-design" },
+                            pathname: "/ui-ux-design",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300 "
                         >
@@ -187,8 +182,7 @@ export default function Navbar2() {
 
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ecommerce-development" },
+                            pathname: "/ecommerce-development",
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -211,8 +205,7 @@ export default function Navbar2() {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "customer-support" },
+                              pathname: "/customer-support",
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -229,8 +222,7 @@ export default function Navbar2() {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "email-marketing" },
+                              pathname: "/email-marketing",
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -247,8 +239,7 @@ export default function Navbar2() {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "live-chat-support" },
+                              pathname: "/live-chat-support",
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -275,8 +266,7 @@ export default function Navbar2() {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "digital-marketing-and-seo" },
+                              pathname: "/digital-marketing-and-seo",
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -395,7 +385,7 @@ export default function Navbar2() {
                   />
                 </Link>
               </div>
-                <hr className="mt-3 "/>
+              <hr className="mt-3 " />
               <nav className="flex flex-col mx-5 mt-10 h-full">
                 <ul className="space-y-2 text-gray-900">
                   <li className="border-b pb-3">
@@ -433,125 +423,134 @@ export default function Navbar2() {
                     </button>
 
                     <AnimatePresence>
-                    {isServicesOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-2 text-xs text-gray-700"
-                      >
-                     
-                        <div className="mt-2">
-                         
-                          <ul className="space-y-2">
-                            <li >
-                              <Link
-                                href={{ pathname: "/services", query: { service: "custom-software-development" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                                
-                                Custom Software Development
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "web-and-app-development" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                               
-                                Web &amp; App Development
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "ai-and-machine-learning" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                                
-                                AI &amp; Machine Learning
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "cloud-and-devops-solutions" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                               
-                                Cloud &amp; DevOps Solutions
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "ui-ux-design" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                               
-                                UI/UX Design
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "ecommerce-development" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                               
-                                Ecommerce Development
-                              </Link>
-                            </li>
-                       
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "customer-support" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                               
-                                Customer Support
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "email-marketing" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                                
-                                Email Marketing
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "live-chat-support" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                                
-                                Live Chat Support
-                              </Link>
-                            </li>
-                          
-                            <li>
-                              <Link
-                                href={{ pathname: "/services", query: { service: "digital-marketing-and-seo" } }}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className="flex items-center hover:text-blue-600 transition duration-300"
-                              >
-                                
-                                Digital Marketing &amp; SEO
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden pl-2 text-xs text-gray-700"
+                        >
+                          <div className="mt-2">
+                            <ul className="space-y-2">
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/custom-software-development",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Custom Software Development
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/web-and-app-development",
+
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Web &amp; App Development
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/ai-and-machine-learning",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  AI &amp; Machine Learning
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/cloud-and-devops-solutions",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Cloud &amp; DevOps Solutions
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/ui-ux-design",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  UI/UX Design
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/ecommerce-development",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Ecommerce Development
+                                </Link>
+                              </li>
+
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/customer-support",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Customer Support
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/email-marketing",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Email Marketing
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/live-chat-support",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Live Chat Support
+                                </Link>
+                              </li>
+
+                              <li>
+                                <Link
+                                  href={{
+                                    pathname: "/digital-marketing-and-seo",
+                                  }}
+                                  onClick={() => setIsSidebarOpen(false)}
+                                  className="flex items-center hover:text-blue-600 transition duration-300"
+                                >
+                                  Digital Marketing &amp; SEO
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
 
                   <li className="border-b pb-3">
@@ -563,22 +562,18 @@ export default function Navbar2() {
                     </Link>
                   </li>
                   <li className="border-b pb-3">
-                    <Link
-                      href="/blogs"
-                      onClick={() => setIsSidebarOpen(false)}
-                    >
+                    <Link href="/blogs" onClick={() => setIsSidebarOpen(false)}>
                       Blogs
                     </Link>
                   </li>
                 </ul>
               </nav>
               <div className="mb-4 text-xs border-t w-[90%] absolute bottom-2  ">
-                  <div className="max-w-[75%] mx-auto mt-3 text-center">
-
+                <div className="max-w-[75%] mx-auto mt-3 text-center">
                   © All Copyright {new Date().getFullYear()} by AllSpark
                   Technologies
-                  </div>
                 </div>
+              </div>
             </div>
 
             {/* Overlay to close the sidebar when clicking outside */}

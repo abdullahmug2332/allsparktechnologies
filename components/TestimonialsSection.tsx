@@ -1,15 +1,17 @@
-"use client"; // Needed for Swiper in App Router
+"use client";
 
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 import { baseURL } from "@/API/baseURL";
+import { useState } from "react";
 
 interface Testimonial {
   id: number;
@@ -26,26 +28,21 @@ interface TestimonialsData {
   testimonials: Testimonial[];
 }
 
+const fetchTestimonials = async (): Promise<TestimonialsData> => {
+  const res = await axios.get(`${baseURL}/homedata`);
+  return res.data.testimonials; // Adjust if structure differs
+};
+
 export default function TestimonialsSection() {
-  const [testimonialsData, setTestimonialsData] = useState<TestimonialsData | null>(null);
   const [active, setActive] = useState(0);
 
-  // Fetch testimonials data from API
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const res = await fetch(`${baseURL}/homedata`);
-        const data = await res.json();
-        setTestimonialsData(data.testimonials); // ✅ Access the correct key
-      } catch (error) {
-        console.error("Failed to fetch testimonials:", error);
-      }
-    };
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["testimonials"],
+    queryFn: fetchTestimonials,
+  });
 
-    fetchTestimonials();
-  }, []);
-
-  if (!testimonialsData) return null; // or show a loader
+  if (isLoading) return <div>Loading testimonials...</div>;
+  if (isError || !data) return <div>Failed to load testimonials.</div>;
 
   return (
     <section className="bg-gray-100 py-24">
@@ -53,12 +50,12 @@ export default function TestimonialsSection() {
         {/* Section header */}
         <div className="flex items-center justify-center space-x-4 text-sm font-semibold uppercase text-blue-700">
           <ArrowLeft className="h-4 w-4" />
-          <span>{testimonialsData?.subtitle}</span>
+          <span>{data.subtitle}</span>
           <ArrowRight className="h-4 w-4" />
         </div>
 
         <h2 className="mb-20 mt-5 text-4xl font-bold text-gray-900">
-          {testimonialsData?.title}
+          {data.title}
         </h2>
 
         {/* Swiper carousel */}
@@ -76,7 +73,7 @@ export default function TestimonialsSection() {
           onSlideChange={(s) => setActive(s.realIndex)}
           className="!pb-8"
         >
-          {testimonialsData.testimonials.map((t, idx) => (
+          {data.testimonials.map((t, idx) => (
             <SwiperSlide key={t.id}>
               <div
                 className={`h-[250px] flex flex-col justify-between rounded-xl p-4 shadow-lg transition-colors duration-300 ${

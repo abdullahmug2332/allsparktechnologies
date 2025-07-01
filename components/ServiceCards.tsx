@@ -1,105 +1,61 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import Image from "next/image";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import { baseURL } from "@/API/baseURL";
 
-
-export default function ServiceCards() {
-  interface ServiceCard {
+interface ServiceCard {
   title: string;
   description: string;
 }
 
-const [services, setServices] = useState<ServiceCard[]>([]);
-useEffect(() => {
-  const fetchPageData = async () => {
-    try {
-      const res = await fetch(`${baseURL}/aboutdata`);
-      if (!res.ok) throw new Error("Failed to fetch page data");
-      const data = await res.json();
-      setServices(data.cards); 
-      console.log("Fetched services:", data.cards);
-    } catch (error) {
-      console.error("Error fetching page data:", error);
-    }
-  };
+const fetchServiceCards = async (): Promise<ServiceCard[]> => {
+  const res = await axios.get(`${baseURL}/aboutdata`);
+  return res.data.cards;
+};
 
-  fetchPageData();
-}, []);
+export default function ServiceCards() {
+  const {
+    data: services,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<ServiceCard[]>({
+    queryKey: ["serviceCards"],
+    queryFn: fetchServiceCards,
+  });
+
+  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isError) return <p className="text-center py-10 text-red-500">Error: {(error as Error).message}</p>;
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-10 md:pt-16  lg:pt-20">
-      {/* Container with three columns on md+ screens, single column on mobile */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Card 1 */}
-        <div className=" border-2 flex  justify-center border-[#E4E9FF] bg-[#F3F6FD] p-6 text-center">
-          {/* Icon */}
-          <div className="mb-4 mt-2  text-[#1D4ED8]">
-            {/* Replace this SVG with your actual icon */}
-            <Image
-              src={"/images/Layer_1.svg"}
-              alt="icon 1"
-              width={75}
-              height={75}
-            />
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="border-2 flex justify-center border-[#E4E9FF] bg-[#F3F6FD] p-6 text-center"
+          >
+            <div className="mb-4 mt-2 text-[#1D4ED8]">
+              <Image
+                src={`/images/Layer_${i + 1}.svg`}
+                alt={`icon ${i + 1}`}
+                width={75}
+                height={75}
+              />
+            </div>
+            <div className="flex flex-col text-start items-start ml-3">
+              <h5 className="mb-2 text-lg font-semibold text-gray-800">
+                {services?.[i]?.title || "Title"}
+              </h5>
+              <p className="mb-4 text-sm text-gray-600 leading-relaxed">
+                {services?.[i]?.description || "Description"}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col text-start items-start ml-3">
-            <h5 className="mb-2 text-lg font-semibold text-gray-800">
-              {services[0]?.title}
-            </h5>
-            {/* Description */}
-            <p className="mb-4 text-sm text-gray-600 leading-relaxed">
-              {services[0]?.description}
-            </p>
-            {/* Button */}
-          </div>
-        </div>
-        <div className=" border-2 flex  justify-center border-[#E4E9FF] bg-[#F3F6FD] p-6 text-center">
-          {/* Icon */}
-          <div className="mb-4 mt-2  text-[#1D4ED8]">
-            {/* Replace this SVG with your actual icon */}
-            <Image
-              src={"/images/Layer_2.svg"}
-              alt="icon 1"
-              width={75}
-              height={75}
-            />
-          </div>
-          <div className="flex flex-col text-start items-start ml-3">
-            <h5 className="mb-2 text-lg font-semibold text-gray-800">
-              {services[1]?.title}
-            </h5>
-            {/* Description */}
-            <p className="mb-4 text-sm text-gray-600 leading-relaxed">
-              {services[1]?.description}
-            </p>
-            {/* Button */}
-          </div>
-        </div>
-        <div className=" border-2 flex  justify-center border-[#E4E9FF] bg-[#F3F6FD] p-6 text-center">
-          {/* Icon */}
-          <div className="mb-4 mt-2  text-[#1D4ED8]">
-            {/* Replace this SVG with your actual icon */}
-            <Image
-              src={"/images/Layer_3.svg"}
-              alt="icon 1"
-              width={75}
-              height={75}
-            />
-          </div>
-          <div className="flex flex-col text-start items-start ml-3">
-            <h5 className="mb-2 text-lg font-semibold text-gray-800">
-              {services[2]?.title}
-            </h5>
-            {/* Description */}
-            <p className="mb-4 text-sm text-gray-600 leading-relaxed">
-              {services[2]?.description}
-            </p>
-            {/* Button */}
-          </div>
-        </div>
-
-        {/* Card 2 */}
+        ))}
       </div>
     </div>
   );

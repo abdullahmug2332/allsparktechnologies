@@ -1,14 +1,33 @@
+// app/layout.tsx
+"use client"
 import GlobalPreloader from "@/components/GlobalPreloader";
 import Script from "next/script";
-
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/nprogress.css";
 import { Toaster } from "sonner";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useState } from "react";
+
+// Font setup
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+// React Query Client Setup
+function ReactQueryProvider({ children }: { children: React.ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -24,7 +43,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="G1uaovu8fDlyB3-5phzFHMeTubsdrU5pyZmKLe4l7FA"
         />
-        {/* JSON-LD Schema */}
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7PCVCQV0ZX"
           strategy="afterInteractive"
@@ -64,8 +83,8 @@ export default function RootLayout({
           `}
         </Script>
       </head>
+
       <body className={`${plusJakartaSans.className} antialiased`}>
-        {/* GTM noscript fallback */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-T96MJWT5"
@@ -74,8 +93,12 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+
         <GlobalPreloader />
-        {children}
+
+        {/* React Query Provider */}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+
         <Toaster position="bottom-right" className="bg-[#384BFF] text-white" />
       </body>
     </html>

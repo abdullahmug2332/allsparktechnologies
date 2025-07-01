@@ -128,8 +128,7 @@ const Navbar = () => {
                       <ul className="space-y-4 pl-2 mt-5 text-sm text-gray-700">
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "custom-software-development" },
+                            pathname: "/custom-software-development"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -144,8 +143,7 @@ const Navbar = () => {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "web-and-app-development" },
+                            pathname: "/web-and-app-development"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -160,8 +158,7 @@ const Navbar = () => {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ai-and-machine-learning" },
+                            pathname: "/ai-and-machine-learning"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -177,8 +174,7 @@ const Navbar = () => {
 
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "cloud-and-devops-solutions" },
+                            pathname: "/cloud-and-devops-solutions"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300 "
                         >
@@ -193,8 +189,7 @@ const Navbar = () => {
                         </Link>
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ui-ux-design" },
+                            pathname: "/ui-ux-design"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300 "
                         >
@@ -210,8 +205,7 @@ const Navbar = () => {
 
                         <Link
                           href={{
-                            pathname: "/services",
-                            query: { service: "ecommerce-development" },
+                            pathname: "/ecommerce-development"
                           }}
                           className="flex items-center hover:text-[#384BFF] transition duration-300"
                         >
@@ -234,8 +228,7 @@ const Navbar = () => {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "customer-support" },
+                              pathname: "/customer-support"
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -252,8 +245,7 @@ const Navbar = () => {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "email-marketing" },
+                              pathname: "/email-marketing"
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -270,8 +262,7 @@ const Navbar = () => {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "live-chat-support" },
+                              pathname: "/live-chat-support"
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -298,8 +289,7 @@ const Navbar = () => {
                         <li>
                           <Link
                             href={{
-                              pathname: "/services",
-                              query: { service: "digital-marketing-and-seo" },
+                              pathname: "/digital-marketing-and-seo",
                             }}
                             className="flex items-center hover:text-[#384BFF] transition duration-300 mr-2"
                           >
@@ -469,10 +459,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "custom-software-development",
-                                      },
+                                      pathname: "/custom-software-development"
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -483,10 +470,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "web-and-app-development",
-                                      },
+                                      pathname: "/web-and-app-development"
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -497,10 +481,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "ai-and-machine-learning",
-                                      },
+                                      pathname: "/ai-and-machine-learning",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -511,10 +492,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "cloud-and-devops-solutions",
-                                      },
+                                      pathname: "/cloud-and-devops-solutions",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -525,8 +503,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: { service: "ui-ux-design" },
+                                      pathname: "/ui-ux-design",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -537,10 +514,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "ecommerce-development",
-                                      },
+                                      pathname: "/ecommerce-development"
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -552,8 +526,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: { service: "customer-support" },
+                                      pathname: "/customer-support",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -564,8 +537,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: { service: "email-marketing" },
+                                      pathname: "/email-marketing"
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -576,8 +548,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: { service: "live-chat-support" },
+                                      pathname: "/live-chat-support",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"
@@ -589,10 +560,7 @@ const Navbar = () => {
                                 <li>
                                   <Link
                                     href={{
-                                      pathname: "/services",
-                                      query: {
-                                        service: "digital-marketing-and-seo",
-                                      },
+                                      pathname: "/digital-marketing-and-seo",
                                     }}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className="flex items-center hover:text-blue-600 transition duration-300"

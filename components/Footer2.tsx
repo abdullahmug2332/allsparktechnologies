@@ -170,8 +170,7 @@ export default function Footer2() {
                   <ChevronsRight className="h-4 w-4 text-white" />
                   <Link
                     href={{
-                      pathname: "/services",
-                      query: { service: serviceItem.query },
+                      pathname: `/${serviceItem.query}`
                     }}
                     className="flex items-center hover:text-white transition duration-300"
                   >

@@ -37,7 +37,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  console.log(mobileBackgroundImage)
   ;
 const backgroundImageURL = isMobile
   ? `${baseURL}/images/service/${mobileBackgroundImage}`
