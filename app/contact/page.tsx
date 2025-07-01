@@ -6,7 +6,7 @@ export async function generateMetadata() {
   try {
     const res = await axios.get(`${baseURL}/contactdata`);
     const metadata = res.data.metadata;
-    console.log(metadata)
+    console.log("Description",metadata.description)
 
     return {
       title: metadata.title,
