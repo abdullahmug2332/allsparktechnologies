@@ -31,7 +31,6 @@ export default function LazyBlogCard({ blog }: LazyBlogCardProps) {
   return (
     <div ref={ref}>
       {inView && (
-        <Link href="/allblogs">
           <BlogCard
             image={blog.image}
             title={blog.title}
@@ -39,7 +38,6 @@ export default function LazyBlogCard({ blog }: LazyBlogCardProps) {
             service={blog.service}
             date={blog.date}
           />
-        </Link>
       )}
     </div>
   );
