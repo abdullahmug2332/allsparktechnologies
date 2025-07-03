@@ -1,84 +1,49 @@
-"use client";
-import React from "react";
+import CloudAndDevopsSolutions from "@/components/CloudAndDevopsSolutions"
 import axios from "axios";
 import { baseURL } from "@/API/baseURL";
-import Topnav from "@/components/Topnav";
-import Navbar2 from "@/components/Navbar2";
-import Footer2 from "@/components/Footer2";
-import ServicesTabs from "@/components/ServicesTabs";
-import { useQuery } from "@tanstack/react-query";
 
-// types...
-type Breadcrumb = { label: string; href: string };
-type HeroSectionData = {
-  title: string;
-  backgroundImage: string;
-  mobileBackgroundImage: string;
-  breadcrumbs: Breadcrumb[];
-  subtitle: string;
-};
-type ServiceCard = { title: string; content: string };
-type ServicesSectionData = { title: string; cards: ServiceCard[] };
-type ApproachCard = { iconColor: string; title: string; content: string };
-type ApproachSectionData = { title: string; cards: ApproachCard[] };
-type FAQItem = { question: string; answer: string };
-type FAQsSectionData = { title: string; items: FAQItem[] };
-type Stat = { id: number; label: string; value: number; suffix: string };
-type WhyChooseData = { title: string; stats: Stat[] };
-type Metadata = {
-  title: string;
-  description: string;
-  robots?: { index?: boolean; follow?: boolean };
-  metadataBase?: { href: string };
-  alternates?: { canonical: string };
-  openGraph?: {
-    title?: string;
-    description?: string;
-    url?: string;
-    type?: string;
-    siteName?: string;
-    images?: { url: string; width: number; height: number; alt: string }[];
-  };
-  twitter?: {
-    card?: string;
-    title?: string;
-    description?: string;
-    images?: string[];
-  };
-};
-type ContentData = {
-  hero: HeroSectionData;
-  introduction: string;
-  services: ServicesSectionData;
-  approach: ApproachSectionData;
-  faqs: FAQsSectionData;
-  whyChoose: WhyChooseData;
-  metadata?: Metadata;
-  script?: any;
-};
-
-// Fetch function
-const fetchServiceData = async (): Promise<ContentData> => {
+export async function generateMetadata() {
   const service = "cloud-and-devops-solutions";
-  const res = await axios.post(`${baseURL}/service`, { name: service });
-  return res.data;
-};
+  try {
+    const res = await axios.post(`${baseURL}/service`, { name: service });
+    const metadata = res.data.metadata;
+    console.log("Title : ",metadata.title)
+    console.log("Description : ",metadata.description)
 
-export default function CustomSoftwareDevelopment() {
-  const { data: contentData, isLoading, isError } = useQuery({
-    queryKey: ["service", "cloud-and-devops-solutions"],
-    queryFn: fetchServiceData,
-  });
+    return {
+      title: metadata.title,
+      description: metadata.description,
+      robots: {
+        index: metadata.robots?.index,
+        follow: metadata.robots?.follow,
+      },
+      alternates: {
+        canonical: `${metadata.metadataBase}${metadata.alternates?.canonical}`,
+      },
+      openGraph: {
+        title: metadata.openGraph?.title,
+        description: metadata.openGraph?.description,
+        url: metadata.openGraph?.url,
+        type: metadata.openGraph?.type,
+        siteName: metadata.openGraph?.siteName,
+        images: metadata.openGraph?.images,
+      },
+      twitter: {
+        card: metadata.twitter?.card,
+        title: metadata.twitter?.title,
+        description: metadata.twitter?.description,
+        images: metadata.twitter?.images,
+      },
+    };
+  } catch (err) {
+    console.error("Metadata fetch failed:", err);
+    return {
+      title: "Default Title",
+      description: "Default description.",
+    };
+  }
+}
 
-  if (isLoading) return <div className="text-center py-20">Loading...</div>;
-  if (isError || !contentData) return <div className="text-center py-20">Failed to load content.</div>;
-
-  return (
-    <>
-      <Topnav />
-      <Navbar2 />
-      <ServicesTabs data={contentData} />
-      <Footer2 />
-    </>
-  );
+export default function page() {
+  return <CloudAndDevopsSolutions/>
 }

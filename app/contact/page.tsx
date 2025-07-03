@@ -1,4 +1,4 @@
-import ContactPageClient from "./ContactPageClient";
+import ContactPageClient from "../../components/ContactPageClient";
 import axios from "axios";
 import { baseURL } from "@/API/baseURL";
 
@@ -6,7 +6,7 @@ export async function generateMetadata() {
   try {
     const res = await axios.get(`${baseURL}/contactdata`);
     const metadata = res.data.metadata;
-    console.log("Description",metadata.description)
+    
 
     return {
       title: metadata.title,

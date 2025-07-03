@@ -1,66 +1,50 @@
-"use client";
-
-import React from "react";
-import Topnav from "@/components/Topnav";
-import Navbar2 from "@/components/Navbar2";
-import Footer2 from "@/components/Footer2";
-import ServicesTabs from "@/components/ServicesTabs";
+import AiAndMachineLearning from "@/components/AiAndMachineLearning"
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import { baseURL } from "@/API/baseURL";
 
-type ContentData = {
-  hero: {
-    title: string;
-    backgroundImage: string;
-    mobileBackgroundImage: string;
-    breadcrumbs: { label: string; href: string }[];
-    subtitle: string;
-  };
-  introduction: string;
-  services: {
-    title: string;
-    cards: { title: string; content: string }[];
-  };
-  approach: {
-    title: string;
-    cards: { iconColor: string; title: string; content: string }[];
-  };
-  faqs: {
-    title: string;
-    items: { question: string; answer: string }[];
-  };
-  whyChoose: {
-    title: string;
-    stats: { id: number; label: string; value: number; suffix: string }[];
-  };
-  metadata?: any;
-  script?: any;
-};
-
-const fetchServiceData = async (): Promise<ContentData> => {
+export async function generateMetadata() {
   const service = "ai-and-machine-learning";
-  const res = await axios.post(`${baseURL}/service`, { name: service });
-  return res.data;
-};
+  try {
+    const res = await axios.post(`${baseURL}/service`, { name: service });
+    const metadata = res.data.metadata;
+    console.log("Title : ",metadata.title)
+    console.log("Description : ",metadata.description)
 
-export default function CustomSoftwareDevelopment() {
-  const { data: contentData, isLoading, isError } = useQuery({
-    queryKey: ["serviceData", "ai-and-machine-learning"],
-    queryFn: fetchServiceData,
-  });
+    return {
+      title: metadata.title,
+      description: metadata.description,
+      robots: {
+        index: metadata.robots?.index,
+        follow: metadata.robots?.follow,
+      },
+      alternates: {
+        canonical: `${metadata.metadataBase}${metadata.alternates?.canonical}`,
+      },
+      openGraph: {
+        title: metadata.openGraph?.title,
+        description: metadata.openGraph?.description,
+        url: metadata.openGraph?.url,
+        type: metadata.openGraph?.type,
+        siteName: metadata.openGraph?.siteName,
+        images: metadata.openGraph?.images,
+      },
+      twitter: {
+        card: metadata.twitter?.card,
+        title: metadata.twitter?.title,
+        description: metadata.twitter?.description,
+        images: metadata.twitter?.images,
+      },
+    };
+  } catch (err) {
+    console.error("Metadata fetch failed:", err);
+    return {
+      title: "Default Title",
+      description: "Default description.",
+    };
+  }
+}
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !contentData) return <div>Something went wrong.</div>;
 
-  return (
-    <>
-      <div>
-        <Topnav />
-        <Navbar2 />
-        <ServicesTabs data={contentData} />
-        <Footer2 />
-      </div>
-    </>
-  );
+export default function page() {
+  return<AiAndMachineLearning/>
 }

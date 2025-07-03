@@ -1,94 +1,49 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import WebAndAppDevelopment from '@/components/WebAndAppDevelopment'
 import axios from "axios";
 import { baseURL } from "@/API/baseURL";
 
-import Topnav from "@/components/Topnav";
-import Navbar2 from "@/components/Navbar2";
-import Footer2 from "@/components/Footer2";
-import ServicesTabs from "@/components/ServicesTabs";
-
-// Define all necessary types
-type Breadcrumb = { label: string; href: string };
-type HeroSectionData = {
-  title: string;
-  backgroundImage: string;
-  mobileBackgroundImage: string;
-  breadcrumbs: Breadcrumb[];
-  subtitle: string;
-};
-type ServiceCard = { title: string; content: string };
-type ServicesSectionData = { title: string; cards: ServiceCard[] };
-type ApproachCard = { iconColor: string; title: string; content: string };
-type ApproachSectionData = { title: string; cards: ApproachCard[] };
-type FAQItem = { question: string; answer: string };
-type FAQsSectionData = { title: string; items: FAQItem[] };
-type Stat = { id: number; label: string; value: number; suffix: string };
-type WhyChooseData = { title: string; stats: Stat[] };
-type Metadata = {
-  title: string;
-  description: string;
-  robots?: { index?: boolean; follow?: boolean };
-  metadataBase?: { href: string };
-  alternates?: { canonical: string };
-  openGraph?: {
-    title?: string;
-    description?: string;
-    url?: string;
-    type?: string;
-    siteName?: string;
-    images?: { url: string; width: number; height: number; alt: string }[];
-  };
-  twitter?: {
-    card?: string;
-    title?: string;
-    description?: string;
-    images?: string[];
-  };
-};
-type ContentData = {
-  hero: HeroSectionData;
-  introduction: string;
-  services: ServicesSectionData;
-  approach: ApproachSectionData;
-  faqs: FAQsSectionData;
-  whyChoose: WhyChooseData;
-  metadata?: Metadata;
-  script?: any;
-};
-
-export default function CustomSoftwareDevelopment() {
-  const [contentData, setContentData] = useState<ContentData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const service = "web-and-app-development"; // 🔁 Change this per page
-
-  useEffect(() => {
-    const fetchContentData = async () => {
-      try {
-        const res = await axios.post(`${baseURL}/service`, { name: service });
-        if (res.data) {
-          setContentData(res.data);
-        } else {
-          console.error("Empty response from server.");
-        }
-      } catch (error) {
-        console.error("Failed to fetch service content:", error);
-      } finally {
-        setLoading(false);
-      }
+export async function generateMetadata() {
+  const service = "web-and-app-development";
+  try {
+    const res = await axios.post(`${baseURL}/service`, { name: service });
+    const metadata = res.data.metadata;
+    console.log("Title : ",metadata.title)
+    console.log("Description : ",metadata.description)
+    return {
+      title: metadata.title,
+      description: metadata.description,
+      robots: {
+        index: metadata.robots?.index,
+        follow: metadata.robots?.follow,
+      },
+      alternates: {
+        canonical: `${metadata.metadataBase}${metadata.alternates?.canonical}`,
+      },
+      openGraph: {
+        title: metadata.openGraph?.title,
+        description: metadata.openGraph?.description,
+        url: metadata.openGraph?.url,
+        type: metadata.openGraph?.type,
+        siteName: metadata.openGraph?.siteName,
+        images: metadata.openGraph?.images,
+      },
+      twitter: {
+        card: metadata.twitter?.card,
+        title: metadata.twitter?.title,
+        description: metadata.twitter?.description,
+        images: metadata.twitter?.images,
+      },
     };
+  } catch (err) {
+    console.error("Metadata fetch failed:", err);
+    return {
+      title: "Default Title",
+      description: "Default description.",
+    };
+  }
+}
 
-    fetchContentData();
-  }, [service]);
 
-  if (loading || !contentData) return null;
-
-  return (
-    <>
-      <Topnav />
-      <Navbar2 />
-      <ServicesTabs data={contentData} />
-      <Footer2 />
-    </>
-  );
+export default function page() {
+  return <WebAndAppDevelopment/>
 }
