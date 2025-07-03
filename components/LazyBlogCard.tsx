@@ -1,7 +1,6 @@
 "use client";
 import { useInView } from "react-intersection-observer";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 
 // Lazy-load the BlogCard component
 const BlogCard = dynamic(() => import("./BlogCard"), {
