@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import HeroSection from "@/components/HeroSection";
 import Card from "./Card";
 import ServiceAccordion from "./ServiceAccordion";
@@ -11,7 +10,6 @@ import TableOfContent from "./TableOfContent";
 import Script from "next/script";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { baseURL } from "@/API/baseURL";
 
 // Types
 type Breadcrumb = { label: string; href: string };

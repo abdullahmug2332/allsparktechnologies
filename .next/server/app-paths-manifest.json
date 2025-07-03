@@ -1,7 +1,20 @@
 {
-  "/ui-ux-design/page": "app/ui-ux-design/page.js",
-  "/web-and-app-development/page": "app/web-and-app-development/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/404/page": "app/404/page.js",
+  "/about/page": "app/about/page.js",
+  "/blogs/page": "app/blogs/page.js",
+  "/customer-support/page": "app/customer-support/page.js",
+  "/cloud-and-devops-solutions/page": "app/cloud-and-devops-solutions/page.js",
   "/contact/page": "app/contact/page.js",
+  "/custom-software-development/page": "app/custom-software-development/page.js",
+  "/digital-marketing-and-seo/page": "app/digital-marketing-and-seo/page.js",
+  "/email-marketing/page": "app/email-marketing/page.js",
+  "/ecommerce-development/page": "app/ecommerce-development/page.js",
+  "/ai-and-machine-learning/page": "app/ai-and-machine-learning/page.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js"
+  "/live-chat-support/page": "app/live-chat-support/page.js",
+  "/privacypolicy/page": "app/privacypolicy/page.js",
+  "/termsandconditions/page": "app/termsandconditions/page.js",
+  "/web-and-app-development/page": "app/web-and-app-development/page.js",
+  "/ui-ux-design/page": "app/ui-ux-design/page.js"
 }
