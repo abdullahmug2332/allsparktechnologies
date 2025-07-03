@@ -21,9 +21,7 @@ export default function BlogCard(props: BlogCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t to-transparent transition duration-500 from-[black] opacity-9 0 group-hover:opacity-100 group-hover:from-[#384cffb7]" />
         <div className="relative z-10 flex flex-col justify-end h-full">
-          <p className="absolute top-0 right-0 bg-white p-[5px] font-bold text-[11px] inline-block rounded-[4px]">
-            {props.service}
-          </p>
+          
           <div className="bg-white absolute right-0 rounded-full p-[5px] duration-500 scale-[0] group-hover:scale-[1.2]">
             <IoAddOutline className="text-[20px] text-[#384BFF] duration-300 hover:rotate-90" />
           </div>
