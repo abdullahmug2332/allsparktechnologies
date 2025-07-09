@@ -1,5 +1,4 @@
 "use client";
-
 import Navbar2 from "@/components/Navbar2";
 import Topnav from "@/components/Topnav";
 import Footer2 from "@/components/Footer2";
@@ -9,36 +8,51 @@ import LazyBlogCard from "@/components/LazyBlogCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { baseURL } from "@/API/baseURL";
-
-interface BlogItem {
-  id: number;
-  image: string;
-  service: string;
-  title: string;
-  subtitle: string;
-  date?: string;
-}
+import { useEffect, useState } from "react";
 
 interface BlogPageData {
   heroimg: string;
   title: string;
   subTitle: string;
-  blogs: BlogItem[];
 }
-
-const fetchBlogs = async (): Promise<BlogPageData> => {
+interface Blog {
+  id: any;
+  urlName:string;
+  title: string;
+  description: string;
+  image: string;
+  content: object;
+  created_at?: string;
+}
+const fetchBlogsdata = async (): Promise<BlogPageData> => {
   const res = await axios.get(`${baseURL}/blogdata`);
   return res.data;
 };
 
 export default function BlogPage() {
+  const [blogs, setBlogs] = useState<Blog[] >([]);
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["blogs"],
-    queryFn: fetchBlogs,
+    queryFn: fetchBlogsdata,
   });
 
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await axios.get(`${baseURL}/blogs`);
+        setBlogs(res.data);
+      } catch (error) {
+        console.error("Failed to fetch blogs", error);
+      }
+    };
+
+    fetchBlogs(); // Don't forget to call the async function
+  }, []);
+
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
-  if (isError || !data) return <div className="text-center py-10">Failed to load blogs.</div>;
+  if (isError || !data)
+    return <div className="text-center py-10">Failed to load blogs.</div>;
 
   return (
     <div>
@@ -68,7 +82,7 @@ export default function BlogPage() {
 
         <div className="my-[50px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
-            {data.blogs.map((blog) => (
+            {blogs.map((blog) => (
               <LazyBlogCard key={blog.id} blog={blog} />
             ))}
           </div>

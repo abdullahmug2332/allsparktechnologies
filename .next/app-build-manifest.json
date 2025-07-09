@@ -6,17 +6,17 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/blogs/[urlName]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/blogs/[urlName]/page.css",
+      "static/chunks/app/blogs/[urlName]/page.js"
+    ],
     "/blogs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/blogs/page.css",
       "static/chunks/app/blogs/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
     ],
     "/contact/page": [
       "static/chunks/webpack.js",
@@ -30,10 +30,17 @@
       "static/css/app/about/page.css",
       "static/chunks/app/about/page.js"
     ],
-    "/_not-found/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/customer-support/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/customer-support/page.css",
+      "static/chunks/app/customer-support/page.js"
     ]
   }
 }

@@ -128,7 +128,6 @@ export default function Footer2() {
                 { name: "About Us", href: "/about" },
                 { name: "FAQ'S", href: "/#faqs" },
                 { name: "Contact Us", href: "/contact" },
-                { name: "Blogs", href: "/blogs" },
               ].map((linkItem, index) => (
                 <li key={index} className="flex items-center space-x-2">
                   <ChevronsRight className="h-4 w-4 text-white" />

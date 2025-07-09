@@ -2,7 +2,7 @@
 import { useInView } from "react-intersection-observer";
 import dynamic from "next/dynamic";
 
-// Lazy-load the BlogCard component
+
 const BlogCard = dynamic(() => import("./BlogCard"), {
   loading: () => (
     <div className="h-[350px] bg-gray-100 rounded-md animate-pulse" />
@@ -15,9 +15,9 @@ interface LazyBlogCardProps {
     id: string | number;
     image: string;
     title: string;
-    subtitle: string;
-    service: string;
-    date?: string;
+    urlName: string;
+    description: string;
+    created_at?: string;
   };
 }
 
@@ -26,16 +26,15 @@ export default function LazyBlogCard({ blog }: LazyBlogCardProps) {
     triggerOnce: true,
     threshold: 0.9,
   });
-
   return (
     <div ref={ref}>
       {inView && (
           <BlogCard
             image={blog.image}
             title={blog.title}
-            subtitle={blog.subtitle}
-            service={blog.service}
-            date={blog.date}
+            urlName={blog.urlName}
+            description={blog.description}
+            created_at={blog.created_at}
           />
       )}
     </div>
