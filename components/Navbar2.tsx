@@ -295,14 +295,14 @@ export default function Navbar2() {
                 Contact
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link
                 href="/blogs"
                 className="text-gray-700 px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white"
               >
                 Blogs
               </Link>
-            </li> */}
+            </li>
           </ul>
 
           {/* Hamburger Button (Mobile) */}
@@ -561,11 +561,11 @@ export default function Navbar2() {
                       Contact Us
                     </Link>
                   </li>
-                  {/* <li className="border-b pb-3">
+                  <li className="border-b pb-3">
                     <Link href="/blogs" onClick={() => setIsSidebarOpen(false)}>
                       Blogs
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
               </nav>
               <div className="mb-4 text-xs border-t w-[90%] absolute bottom-2  ">

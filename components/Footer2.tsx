@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Footer2() {
   return (
     <>
-      <footer className="bg-[#0D0B52] text-white">
+      <footer className="bg-[#0D0B52] text-white ">
         {/* Top Bar */}
 
         <div className="py-8">
@@ -128,6 +128,7 @@ export default function Footer2() {
                 { name: "About Us", href: "/about" },
                 { name: "FAQ'S", href: "/#faqs" },
                 { name: "Contact Us", href: "/contact" },
+                { name: "Blogs", href: "/blogs" },
               ].map((linkItem, index) => (
                 <li key={index} className="flex items-center space-x-2">
                   <ChevronsRight className="h-4 w-4 text-white" />

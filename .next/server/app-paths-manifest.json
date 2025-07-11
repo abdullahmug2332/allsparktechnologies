@@ -16,5 +16,6 @@
   "/privacypolicy/page": "app/privacypolicy/page.js",
   "/termsandconditions/page": "app/termsandconditions/page.js",
   "/ui-ux-design/page": "app/ui-ux-design/page.js",
-  "/web-and-app-development/page": "app/web-and-app-development/page.js"
+  "/web-and-app-development/page": "app/web-and-app-development/page.js",
+  "/blogs/[urlName]/page": "app/blogs/[urlName]/page.js"
 }

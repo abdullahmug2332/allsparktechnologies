@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <footer className="bg-[#18185E] text-gray-300 py-24">
+      <footer className="bg-[#18185E] text-gray-300 py-24 ">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
           {/* Company Info */}
           <div className="space-y-4">
@@ -50,6 +50,7 @@ export default function Footer() {
                 { name: "About Us", href: "/about" },
                 { name: "FAQ'S", href: "/#faqs" },
                 { name: "Contact Us", href: "/contact" },
+                { name: "Blogs", href: "/blogs" },
               ].map((linkItem, index) => (
                 <li key={index} className="flex items-center space-x-2">
                   <ChevronsRight className="h-4 w-4 text-white" />
