@@ -57,7 +57,9 @@ interface BlogData {
 
 export default async function BlogDetailPage(props: any){
    const { params } = props;
-  const res = await fetch(`${baseURL}/blogs/${params.urlName}`);
+  const res = await fetch(`${baseURL}/blogs/${params.urlName}`, {
+  next: { revalidate: 60 }, // revalidate after 60 seconds
+});
 
   if (!res.ok) return notFound();
 
