@@ -86,6 +86,7 @@ export default async function BlogDetailPage(props: any){
   // ✅ Update blog.content with new HTML (with ids on headings)
   const updatedContent = document.body.innerHTML;
   return (
+
     <div>
       <Topnav />
       <Navbar2 />
