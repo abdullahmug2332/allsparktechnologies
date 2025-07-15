@@ -13,8 +13,9 @@ interface BlogCardProps {
 }
 
 export default function BlogCard(props: BlogCardProps) {
+
   return (
-    <Link href={`${baseURL}/blogs/${props.urlName}`}>
+    <Link href={`/blogs/${props.urlName}`}>
       <div className="group hover:cursor-pointer shadow-2xl rounded-[10px] overflow-hidden">
         <div className="relative w-full p-[15px] h-[350px] overflow-hidden">
           <div
