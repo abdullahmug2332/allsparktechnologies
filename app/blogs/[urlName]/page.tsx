@@ -62,6 +62,7 @@ export default async function BlogDetailPage(props: any){
   if (!res.ok) return notFound();
 
   const blog: BlogData = await res.json();
+  console.log(blog)
 
   // ✅ Parse content and extract headings
   const dom = new JSDOM(blog.content);
