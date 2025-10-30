@@ -77,6 +77,7 @@ export default function ServiceCard({ serviceCard }: ServiceCardProps) {
                   width={60}
                   height={60}
                   className="bg-white p-3 w-[50px] md:w-[70px] rounded-xl shadow-sm"
+                  unoptimized
                 />
 
                 {/* Text */}
