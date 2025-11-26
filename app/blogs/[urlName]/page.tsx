@@ -167,7 +167,7 @@ export default async function BlogDetailPage({ params }: any) {
             src={`${baseURL}/images/blogs/${blog.image}`}
             width={400}
             height={400}
-             
+             unoptimized
             className="rounded-[10px] !w-[100%]"
             alt="MainImg "
              loading="lazy" 
