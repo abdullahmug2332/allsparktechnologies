@@ -98,7 +98,7 @@ export default function Contact({ pagedata }: { pagedata: ContactPageData }) {
               {/* Call Us */}
               <motion.a
                 href={pagedata?.methods[0].href}
-                className="flex items-center relative group transition-all"
+                className="flex items-start relative group transition-all "
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -114,6 +114,7 @@ export default function Contact({ pagedata }: { pagedata: ContactPageData }) {
                     {pagedata?.methods[0].label}
                   </h3>
                   <p className="para">{pagedata?.methods[0].value}</p>
+                  <p className="para">+1(616)308-1863</p>
                 </div>
               </motion.a>
 

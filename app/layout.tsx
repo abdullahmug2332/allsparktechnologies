@@ -6,7 +6,6 @@ import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/nprogress.css";
 import { Toaster } from "sonner";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";

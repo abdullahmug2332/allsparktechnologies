@@ -16,6 +16,7 @@ import HomeProcess from "./HomeProcess";
 import { StaticImageData } from "next/image";
 import HomePage from "./HomePage";
 import Marquee from "@/components/Marquee";
+import Navbar from "./Navbar";
 export interface HomePageData {
   hero: {
     bg: string;

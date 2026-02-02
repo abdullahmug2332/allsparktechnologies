@@ -121,9 +121,13 @@ export default function Footer() {
                   <Mail className="h-4 w-4 text-gray-400" />
                   <span>info@allsparktechnologies.com</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-gray-400" />
-                  <span>+1(616)308-1863</span>
+                <li className="flex items-start space-x-2">
+                  <Phone className="h-4 w-4 text-gray-400 mt-1" />
+                  <div>
+                  <span>+1(616)308-1863</span> <br />
+                  <span>+1(732)737-8022 </span>
+
+                  </div>
                 </li>
                 <li className="flex items-center space-x-2">
                   <MapPin className="h-6 w-6 text-gray-400" />

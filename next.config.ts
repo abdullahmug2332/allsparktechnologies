@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["localhost", "vercel.libererllc.com"],
+    domains: ["localhost", "allsparktechnologies.com"],
 
     remotePatterns: [
       {
@@ -11,15 +11,16 @@ const nextConfig: NextConfig = {
         port: "5000", // Allow dev API
         pathname: "/images/**",
       },
-      {
+       {
         protocol: "https",
-        hostname: "vercel.libererllc.com",
-        pathname: "/images/**",
+        hostname: "allsparktechnologies.com",
+        port: "",
+        pathname: "/api/images/*",
       },
     ],
   },
 
 }
 
-
 export default nextConfig;
+

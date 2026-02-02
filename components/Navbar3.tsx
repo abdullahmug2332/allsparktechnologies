@@ -106,8 +106,7 @@ export default function Navbar3() {
 
           {/* Left: Logo */}
           <Link href="/" className="flex items-center gap-3" aria-label="AllSpark Home">
-
-            {scrolled == true ? <Image src="/images/logo.svg" alt="logo" width={128} height={32} className="h-8 w-auto" priority /> : <Image src="images/footer-logo copy.svg" alt="logo" width={128} height={32} className="h-8 w-auto" priority />}
+            {scrolled == true ? <Image src="/images/logo.png" alt="logo" width={500} height={500} className="h-8 w-auto" priority /> : <Image src="images/footer-logo copy.svg" alt="logo" width={128} height={32} className="h-8 w-auto" priority />}
           </Link>
 
           {/* Desktop Nav (lg+) */}
