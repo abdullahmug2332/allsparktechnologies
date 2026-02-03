@@ -26,6 +26,7 @@ export default  function BlogPage() {
 const { data: BlogPageData } = useQuery(getBlogDataQuery());
   const { data: blogs } = useQuery(getBlogsQuery());
 
+
   if (!BlogPageData || !blogs) return <div>Loading blogs...</div>;
 
   return (

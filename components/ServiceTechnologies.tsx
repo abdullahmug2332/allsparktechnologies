@@ -33,16 +33,16 @@ export default function ServiceTechnologies({
   );
 
   return (
-    <div className="bg-[#181965] pad relative overflow-hidden">
+    <div className="bg-[#181965] pad relative overflow-hidden techlogies-section">
       <Image
         src={globe}
         alt="globe"
-        width={200}
+        width={300}
         height={200}
-        className="absolute right-0 h-auto object-cover w-auto opacity-40"
+        className="absolute right-0 h-[100%] object-cover w-auto opacity-40 z-[1] pointer-events-none"
       />
 
-      <div className="container ">
+      <div className="container relative z-[2]">
         <div className="text-white text-center">
           {/* Heading Animation */}
           <motion.p
@@ -67,7 +67,7 @@ export default function ServiceTechnologies({
           </motion.p>
 
           {/* Tabs */}
-          <div className="flex mt-[60px] border-b justify-center  gap-[10px]">
+          <div className="flex mt-[60px] border-b justify-center  gap-[10px] z-[2]">
             {serviceTechnologies?.technologies.map((category) => (
               <p
                 key={category.name}
@@ -81,7 +81,7 @@ export default function ServiceTechnologies({
           </div>
 
           {/* Technologies Animation */}
-          <div className="mt-[30px] flex flex-wrap gap-2 md:gap-3 justify-center">
+          <div className="mt-[30px] flex flex-wrap gap-3 gap-y-6 md:gap-3 justify-center">
             {serviceTechnologies?.technologies
               .find((category) => category.name === select)
               ?.techs.map((tec, index) => (

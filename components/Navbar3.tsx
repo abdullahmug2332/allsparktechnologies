@@ -20,56 +20,114 @@ export default function Navbar3() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const linkBase = "text-[16px] transition-colors hover:opacity-100 px-4 py-2 hover:bg-[#384BFF]  hover:text-white rounded-full";
+  const linkBase =
+    "text-[16px] transition-colors hover:opacity-100 px-4 py-2 hover:bg-[#384BFF]  hover:text-white rounded-full";
   const linkColor = scrolled
     ? "text-slate-700 hover:text-slate-900"
     : "text-white hover:text-white";
-
 
   // Mega menu data (3 columns like Navbar2)
   const megaCols: {
     title: string;
     items: { href: string; label: string; icon?: string }[];
   }[] = [
-      {
-        title: "Software Development & AI",
-        items: [
-          { href: "/custom-software-development", label: "Custom Software Development", icon: "/images/development-01.svg" },
-          { href: "/website-development", label: "Website Development", icon: "/images/web-app-development-01.svg" },
-          { href: "/mobile-app-development", label: "Mobile App Development", icon: "/images/mobappnav.svg" },
-          { href: "/ai-and-machine-learning", label: "AI & Machine Learning", icon: "/images/ai-machine-01.svg" },
-          { href: "/ui-ux-design", label: "UI/UX Design", icon: "/images/social-media-marekting-01.svg" },
-          { href: "/ecommerce-development", label: "Ecommerce Development", icon: "/images/ecommerce-development-icon-01.svg" },
-        ],
-      },
-      {
-        title: "BPO & Tech-Enabled Services",
-        items: [
-          { href: "/customer-support", label: "Customer Support", icon: "/images/customer-support-icon-01.svg" },
-          { href: "/email-support", label: "Email Support", icon: "/images/email-marketing-icon-01.svg" },
-          { href: "/live-chat-support", label: "Live Chat Support", icon: "/images/live-chat-icon-01.svg" },
-          { href: "/taxi-support", label: "Taxi Support", icon: "/images/taxinav.svg" },
-        ],
-      },
-      {
-        title: "Marketing & Engagement",
-        items: [
-          { href: "/seo", label: "SEO", icon: "/images/seonav.svg" },
-          { href: "/digital-marketing", label: "Digital Marketing", icon: "/images/digital-marketing-icon-01.svg" },
-        ],
-      },
-    ];
+    {
+      title: "Software Development & AI",
+      items: [
+        {
+          href: "/custom-software-development",
+          label: "Custom Software Development",
+          icon: "/images/development-01.svg",
+        },
+        {
+          href: "/website-development",
+          label: "Website Development",
+          icon: "/images/web-app-development-01.svg",
+        },
+        {
+          href: "/mobile-app-development",
+          label: "Mobile App Development",
+          icon: "/images/mobappnav.svg",
+        },
+        {
+          href: "/ai-and-machine-learning",
+          label: "AI & Machine Learning",
+          icon: "/images/ai-machine-01.svg",
+        },
+        {
+          href: "/ui-ux-design",
+          label: "UI/UX Design",
+          icon: "/images/social-media-marekting-01.svg",
+        },
+        {
+          href: "/ecommerce-development",
+          label: "Ecommerce Development",
+          icon: "/images/ecommerce-development-icon-01.svg",
+        },
+      ],
+    },
+    {
+      title: "BPO & Tech-Enabled Services",
+      items: [
+        {
+          href: "/customer-support",
+          label: "Customer Support",
+          icon: "/images/customer-support-icon-01.svg",
+        },
+        {
+          href: "/email-support",
+          label: "Email Support",
+          icon: "/images/email-marketing-icon-01.svg",
+        },
+        {
+          href: "/live-chat-support",
+          label: "Live Chat Support",
+          icon: "/images/live-chat-icon-01.svg",
+        },
+        {
+          href: "/taxi-support",
+          label: "Taxi Support",
+          icon: "/images/taxinav.svg",
+        },
+      ],
+    },
+    {
+      title: "Marketing & Engagement",
+      items: [
+        { href: "/seo", label: "SEO", icon: "/images/seonav.svg" },
+        {
+          href: "/digital-marketing",
+          label: "Digital Marketing",
+          icon: "/images/digital-marketing-icon-01.svg",
+        },
+      ],
+    },
+  ];
 
   // Framer variants
   const headerVariants = {
     initial: { opacity: 0, y: -12 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.28, ease: "easeOut" } },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.28, ease: "easeOut" },
+    },
   };
 
   const megaVariants = {
     initial: { opacity: 0, y: 8, scale: 0.98 },
-    animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.18, ease: "easeOut" } },
-    exit: { opacity: 0, y: 6, scale: 0.985, transition: { duration: 0.14, ease: "easeIn" } },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.18, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: 6,
+      scale: 0.985,
+      transition: { duration: 0.14, ease: "easeIn" },
+    },
   };
 
   const drawerVariants = {
@@ -85,7 +143,7 @@ export default function Navbar3() {
   };
 
   const wrapBase =
-    "fixed  inset-x-0 top-0 z-50 border-b transition-colors duration-300  ";
+    "fixed  inset-x-0 top-0 z-50 border-b transition-colors duration-300 ";
   const surface = scrolled
     ? "bg-white/95 text-slate-900 border-black/10 shadow-sm backdrop-blur"
     : "md:bg-transparent text-white border-white/10";
@@ -103,28 +161,53 @@ export default function Navbar3() {
     >
       <div className=" w-[100vw]  ">
         <div className="container flex items-center justify-between py-[15px] ">
-
           {/* Left: Logo */}
-          <Link href="/" className="flex items-center gap-3" aria-label="AllSpark Home">
-            {scrolled == true ? <Image src="/images/logo.png" alt="logo" width={500} height={500} className="h-8 w-auto" priority /> : <Image src="images/footer-logo copy.svg" alt="logo" width={128} height={32} className="h-8 w-auto" priority />}
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+            aria-label="AllSpark Home"
+          >
+            {scrolled == true ? (
+              <Image
+                src="/images/logo.png"
+                alt="logo"
+                width={500}
+                height={500}
+                className="h-8 w-auto"
+                priority
+              />
+            ) : (
+              <Image
+                src="images/footer-logo copy.svg"
+                alt="logo"
+                width={128}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
+            )}
           </Link>
 
           {/* Desktop Nav (lg+) */}
-          <nav className=" hidden items-center gap-3 xl:gap-8 lg:flex font-medium" aria-label="Primary">
-            <Link href="/" className={`${linkBase} ${linkColor} `}>Home</Link>
-            <Link href="/about" className={`${linkBase} ${linkColor}`}>About</Link>
+          <nav
+            className=" hidden items-center gap-3 xl:gap-8 lg:flex font-medium"
+            aria-label="Primary"
+          >
+            <Link href="/" className={`${linkBase} ${linkColor} `}>
+              Home
+            </Link>
+            <Link href="/about" className={`${linkBase} ${linkColor}`}>
+              About
+            </Link>
 
             {/* Mega Dropdown with FM smoothness */}
             <div
-
               onMouseEnter={() => setMegaOpen(true)}
               onMouseLeave={() => setMegaOpen(false)}
             >
               <button
                 className={`${linkBase} ${linkColor} flex items-center gap-1`}
-
                 aria-expanded={megaOpen}
-
               >
                 Services
                 <ChevronDown
@@ -132,7 +215,7 @@ export default function Navbar3() {
                 />
               </button>
 
-              <AnimatePresence >
+              <AnimatePresence>
                 {megaOpen && (
                   <motion.div
                     id="services-mega"
@@ -149,7 +232,9 @@ export default function Navbar3() {
                         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-1 md:grid-cols-3">
                           {megaCols.map((col) => (
                             <div key={col.title}>
-                              <h3 className="mb-2 text-base font-bold text-gray-800">{col.title}</h3>
+                              <h3 className="mb-2 text-base font-bold text-gray-800">
+                                {col.title}
+                              </h3>
                               <ul className="mt-4  pl-1 text-sm list-none">
                                 {col.items.map((it) => (
                                   <li key={it.href}>
@@ -181,13 +266,20 @@ export default function Navbar3() {
               </AnimatePresence>
             </div>
 
-            <Link href="/contact" className={`${linkBase} ${linkColor}`}>Contact</Link>
-            <Link href="/blogs" className={`${linkBase} ${linkColor}`}>Blogs</Link>
+            <Link href="/contact" className={`${linkBase} ${linkColor}`}>
+              Contact
+            </Link>
+            <Link href="/blogs" className={`${linkBase} ${linkColor}`}>
+              Blogs
+            </Link>
           </nav>
 
           {/* CTA (lg+) */}
           <Link href="/contact" className={quoteBtn}>
-            GET A QUOTE <span ><MdKeyboardArrowRight className="text-[20px]" /></span>
+            GET A QUOTE{" "}
+            <span>
+              <MdKeyboardArrowRight className="text-[20px]" />
+            </span>
           </Link>
 
           {/* Mobile burger (sm–md) */}
@@ -198,7 +290,6 @@ export default function Navbar3() {
           >
             <Menu className="h-6 w-6" />
           </button>
-
         </div>
       </div>
 
@@ -213,7 +304,7 @@ export default function Navbar3() {
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-black w-[100vw] h-[100vh] "
+              className="absolute inset-0 bg-black w-[100vw] h-[100vh]  "
               variants={backdropVariants}
               onClick={() => setMobileOpen(false)}
             />
@@ -226,11 +317,22 @@ export default function Navbar3() {
               aria-modal="true"
               aria-label="Mobile navigation "
             >
-              <div className="relative h-full z-50 flex flex-col justify-between">
-                <div>
+              <div className="relative  z-50 flex flex-col justify-between h-[100%] overflow-scroll">
+                <div className="h-[100%] flex flex-col">
                   <div className="flex h-[72px] items-center justify-between px-4 border-b border-black/10  bg-white ">
-                    <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center" aria-label="AllSpark Home">
-                      <Image src="/images/logo.svg" alt="logo" width={120} height={28} className="h-7 w-auto" />
+                    <Link
+                      href="/"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center"
+                      aria-label="AllSpark Home"
+                    >
+                      <Image
+                        src="/images/logo.svg"
+                        alt="logo"
+                        width={120}
+                        height={28}
+                        className="h-7 w-auto"
+                      />
                     </Link>
                     <button
                       aria-label="Close menu"
@@ -241,7 +343,7 @@ export default function Navbar3() {
                     </button>
                   </div>
 
-                  <nav className="px-4 py-4 z-50  bg-white relative ">
+                  <nav className="px-4 py-4 z-50  bg-white relative  flex flex-col">
                     <Link
                       href="/"
                       onClick={() => setMobileOpen(false)}
@@ -276,21 +378,31 @@ export default function Navbar3() {
                           id="mobile-services"
                           key="mobile-services"
                           initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1, transition: { duration: 0.22 } }}
-                          exit={{ height: 0, opacity: 0, transition: { duration: 0.18 } }}
-                          className="overflow-hidden pl-3"
+                          animate={{
+                            height: "auto",
+                            opacity: 1,
+                            transition: { duration: 0.22 },
+                          }}
+                          exit={{
+                            height: 0,
+                            opacity: 0,
+                            transition: { duration: 0.18 },
+                          }}
+                          className=" pl-3"
                         >
-                          <div className="mt-1 space-y-1">
-                            {megaCols.flatMap((c) => c.items).map((i) => (
-                              <Link
-                                key={i.href}
-                                href={i.href}
-                                onClick={() => setMobileOpen(false)}
-                                className="block rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-100"
-                              >
-                                {i.label}
-                              </Link>
-                            ))}
+                          <div className="mt-1 space-y-1 h-[250px] overflow-scroll">
+                            {megaCols
+                              .flatMap((c) => c.items)
+                              .map((i) => (
+                                <Link
+                                  key={i.href}
+                                  href={i.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-100"
+                                >
+                                  {i.label}
+                                </Link>
+                              ))}
                           </div>
                         </motion.div>
                       )}
@@ -311,23 +423,26 @@ export default function Navbar3() {
                       Blogs
                     </Link>
 
+                    {/* Button  */}
                     <div className="mt-4 border-t border-black/10 pt-4">
                       <Link
                         href="/contact"
                         onClick={() => setMobileOpen(false)}
                         className="inline-flex w-full items-center justify-center rounded-full bg-[#384bff] px-5 py-2.5 text-sm font-semibold text-white"
                       >
-                        GET A QUOTE <span><MdKeyboardArrowRight className="text-[20px]" /></span>
+                        GET A QUOTE{" "}
+                        <span>
+                          <MdKeyboardArrowRight className="text-[20px]" />
+                        </span>
                       </Link>
                     </div>
+                    {/* <div className="mb-4 mx-auto mt-auto text-xs border-t w-[90%] z-10 border">
+                      <div className="max-w-[75%] mx-auto mt-3 text-center">
+                        © All Copyright {new Date().getFullYear()} by AllSpark
+                        Technologies
+                      </div>
+                    </div> */}
                   </nav>
-                </div>
-
-                <div className="mb-4 text-xs border-t w-[90%] absolute bottom-2  z-10">
-                  <div className="max-w-[75%] mx-auto mt-3 text-center">
-                    © All Copyright {new Date().getFullYear()} by AllSpark
-                    Technologies
-                  </div>
                 </div>
               </div>
             </motion.aside>

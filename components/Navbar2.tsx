@@ -472,7 +472,7 @@ export default function Navbar2() {
                           className="overflow-hidden pl-2 text-xs text-gray-700"
                         >
                           <div className="mt-2">
-                            <div className="space-y-6 !list-unstyled ">
+                            <div className="space-y-6 !list-unstyled h-[250px] overflow-scroll  ">
                               <div>
                                 <Link
                                   href={{

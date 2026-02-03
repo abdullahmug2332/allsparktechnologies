@@ -11,7 +11,6 @@ import ServicesClients from '@/components/ServicesClients'
 import ServicesIndus from '@/components/ServicesIndus'
 import ServicesOffering from '@/components/ServicesOffering'
 import ServiceTechnologies from '@/components/ServiceTechnologies'
-import React from 'react'
 import { ServicePageDataProps } from "@/lib/types"
 
 
