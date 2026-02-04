@@ -13,6 +13,7 @@ import { baseURL } from "@/API/baseURL";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
+import Navbar2 from "./Navbar2";
 
 interface heroSection {
   bg: string;
@@ -30,8 +31,8 @@ export default function HomePage({ hero }: { hero: heroSection[] }) {
     Autoplay({ delay: 10000, stopOnInteraction: false })
   );
   return (
-    <main className="min-h-screen max-w-[100vw] relative bg-slate-950 text-white antialiased">
-      <Navbar3 />
+    <main className="min-h-screen max-w-[100vw] relative  text-white antialiased">
+      <Navbar2 />
       <Carousel className=" h-[100%] min-h-screen " plugins={[plugin.current]} opts={{
         loop: true, // ✅ Makes the carousel loop infinitely
       }}>

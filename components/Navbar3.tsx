@@ -297,14 +297,14 @@ export default function Navbar3() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="lg:hidden fixed inset-0 z-[70] "
+            className="lg:hidden fixed inset-0 z-[70] flex "
             initial="hidden"
             animate="show"
             exit="exit"
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-black w-[100vw] h-[100vh]  "
+              className="absolute inset-0 bg-black w-[100vw] h-[100vh]"
               variants={backdropVariants}
               onClick={() => setMobileOpen(false)}
             />
@@ -318,7 +318,7 @@ export default function Navbar3() {
               aria-label="Mobile navigation "
             >
               <div className="relative  z-50 flex flex-col justify-between h-[100%] overflow-scroll">
-                <div className="h-[100%] flex flex-col">
+                <div className="h-[100%] flex flex-col relative">
                   <div className="flex h-[72px] items-center justify-between px-4 border-b border-black/10  bg-white ">
                     <Link
                       href="/"
@@ -436,13 +436,13 @@ export default function Navbar3() {
                         </span>
                       </Link>
                     </div>
-                    {/* <div className="mb-4 mx-auto mt-auto text-xs border-t w-[90%] z-10 border">
-                      <div className="max-w-[75%] mx-auto mt-3 text-center">
-                        © All Copyright {new Date().getFullYear()} by AllSpark
-                        Technologies
-                      </div>
-                    </div> */}
                   </nav>
+                  <div className="mb-4 mx-auto mt-auto text-xs border-t  w-[90%] z-10 ">
+                    <div className="max-w-[75%] mx-auto mt-3 text-center">
+                      © All Copyright {new Date().getFullYear()} by AllSpark
+                      Technologies
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.aside>

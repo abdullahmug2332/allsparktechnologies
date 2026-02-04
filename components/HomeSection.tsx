@@ -114,7 +114,6 @@ export default function Home({ homeData }: { homeData: HomePageData }) {
     initialData: homeData,
   });
   const dataToUse = data || homeData;
-  console.log("script :", dataToUse.script)
   return (
     <div className="w-[100vw]  overflow-x-hidden">
       {/* <Navbar /> */}
