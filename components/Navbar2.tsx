@@ -23,9 +23,9 @@ export default function Navbar2() {
   const isHome = pathname === "/";
   const handleScroll = () => {
     if (window.scrollY > 0) {
-      setIsSticky(true); // Sticky navbar when scroll position > 0
+      setIsSticky(true);
     } else {
-      setIsSticky(false); // Non-sticky navbar when scroll position = 0
+      setIsSticky(false);
     }
   };
 
@@ -37,24 +37,24 @@ export default function Navbar2() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const quoteBtn =
+    "hidden lg:inline-flex items-center  rounded-full px-5 py-2.5 text-sm font-semibold uppercase tracking-wide bg-[#384bff] text-white hover:brightness-110 transition-colors ";
 
   return (
     <>
       <nav
-        className={`${plusJakartaSans.className} flex items-center transition-all duration-300
+        className={`flex items-center transition-all duration-300 
     ${
       isHome
         ? isSticky
-          ? "fixed top-0 left-0 w-full bg-white shadow-lg z-50"
-          : "absolute top-0 left-0 w-full bg-transparent z-50"
-        : "sticky top-0 left-0 w-full bg-white shadow-lg z-50"
+          ? "fixed top-0 left-0 w-full bg-white shadow-lg z-50 "
+          : "absolute top-0 left-0 w-full bg-transparent z-50 border-b border-white/10"
+        : "sticky top-0 left-0 w-full bg-white shadow-lg z-50 "
     }
   `}
       >
         <div
-          className={`flex-1 flex py-5 lg:py-3 items-center justify-between lg:justify-around px-[20px] lg:px-0 ${
-            isSticky ? "max-w-[100%]" : ""
-          }`}
+          className={`flex-1 flex py-5 lg:py-3 items-center justify-between lg:justify-around  px-[20px] lg:px-0 navborder `}
         >
           {/* Left: Logo */}
           <div className="flex items-center space-x-2">
@@ -74,11 +74,13 @@ export default function Navbar2() {
           </div>
 
           {/* Middle: Nav links (Desktop) */}
-          <ul className="hidden space-x-4 items-center font-medium text-gray-700 lg:flex list-none">
+          <ul className="hidden space-x-4 items-center font-[400] text-gray-700 lg:flex list-none">
             <li>
               <Link
                 href="/"
-                className="text-gray-700 px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white"
+                className={`${
+                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white`}
               >
                 Home
               </Link>
@@ -86,13 +88,19 @@ export default function Navbar2() {
             <li>
               <Link
                 href="/about"
-                className="text-gray-700 px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white"
+                className={`${
+                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white`}
               >
                 About
               </Link>
             </li>
             <div className=" group">
-              <button className="flex items-center text-gray-700 px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white">
+              <button
+                className={`${
+                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white flex items-center`}
+              >
                 Services
                 <ChevronDown className="ml-1 h-4 w-4 " />
               </button>
@@ -337,7 +345,9 @@ export default function Navbar2() {
             <li>
               <Link
                 href="/contact"
-                className="text-gray-700 px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white"
+                className={`${
+                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white`}
               >
                 Contact
               </Link>
@@ -345,7 +355,9 @@ export default function Navbar2() {
             <li>
               <Link
                 href="/blogs"
-                className="text-gray-700 px-4 py-2 hover:bg-[#384BFF]  hover:text-white transition duration-500 rounded-full font-semibold "
+                className={`${
+                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white`}
               >
                 Blogs
               </Link>
@@ -365,10 +377,18 @@ export default function Navbar2() {
               className={`text-[25px] ${isHome && !isSticky ? "text-white" : "text-black"} `}
             />
           </button>
+          {isHome && (
+            <Link href="/contact" className={quoteBtn}>
+              GET A QUOTE{" "}
+              <span>
+                <MdKeyboardArrowRight className="text-[20px]" />
+              </span>
+            </Link>
+          )}
         </div>
-
-        {/* Right: Get a Quote button (Desktop Only) */}
-        <div className="hidden lg:block group relative min-w-[15%] bg-[#384BFF] py-3 transition-transform duration-300 ease-out hover:scale-105 hover:bg-[#253AC7]">
+        
+        {!isHome && (
+             <div className="hidden lg:block group relative min-w-[15%] bg-[#384BFF] py-3 transition-transform duration-300 ease-out hover:scale-105 hover:bg-[#253AC7]">
           <Link href="/contact">
             <div className="px-4 pl-14 py-2 font-medium text-white transition-colors duration-300 flex items-center">
               Get a Quote{" "}
@@ -378,6 +398,9 @@ export default function Navbar2() {
             </div>
           </Link>
         </div>
+          )}
+        {/* Right: Get a Quote button (Desktop Only) */}
+       
       </nav>
 
       <AnimatePresence>

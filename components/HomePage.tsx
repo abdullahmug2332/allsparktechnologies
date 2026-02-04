@@ -32,7 +32,7 @@ export default function HomePage({ hero }: { hero: heroSection[] }) {
   );
   return (
     <main className="min-h-screen max-w-[100vw] relative  text-white antialiased">
-      <Navbar2 />
+      <Navbar2   />
       <Carousel className=" h-[100%] min-h-screen " plugins={[plugin.current]} opts={{
         loop: true, // ✅ Makes the carousel loop infinitely
       }}>
@@ -45,9 +45,6 @@ export default function HomePage({ hero }: { hero: heroSection[] }) {
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url(${baseURL}/images/home/${data.bg})`,
               }}
             >
-
-
-
               <div className="container mx-auto h-full">
                 <div className="h-full flex flex-col justify-center items-center sm:items-start ">
                   {/* Badge */}
