@@ -62,7 +62,7 @@ export default function Navbar2() {
         className={`flex items-center transition-all duration-300 
     ${
       isHome
-        ? isSticky
+        ? isSticky 
           ? "fixed top-0 left-0 w-full bg-white shadow-lg z-50 "
           : "absolute top-0 left-0 w-full bg-transparent z-50 border-b border-white/10"
         : "sticky top-0 left-0 w-full bg-white shadow-lg z-50 "
@@ -77,7 +77,7 @@ export default function Navbar2() {
             <Link href="/">
               <Image
                 src={
-                  isHome && !isSticky
+                  isHome && !isSticky 
                     ? "/images/footer-logo copy.svg"
                     : "/images/logo.png"
                 }
@@ -95,7 +95,7 @@ export default function Navbar2() {
               <Link
                 href="/"
                 className={`${
-                  isHome && !isSticky ? "text-white" : "text-gray-700"
+                  isHome && !isSticky  ? "text-white" : "text-gray-700"
                 } px-4 py-2 transition duration-500 rounded-full font-semibold hover:bg-[#384BFF] hover:text-white`}
               >
                 Home
@@ -381,17 +381,24 @@ export default function Navbar2() {
           </ul>
 
           {/* Hamburger Button (Mobile) */}
+          {/* MOBILE HAMBURGER */}
           <button
-            onClick={() => {
-              setIsSidebarOpen(true);
-              setIsNav(true);
-            }}
-            className="lg:hidden text-gray-700"
-            aria-label="Open Menu"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="lg:hidden"
           >
-            <RxHamburgerMenu
-              className={`text-[25px] ${isHome && !isSticky ? "text-white" : "text-black"} `}
-            />
+            {isSidebarOpen ? (
+              <RxCross1
+                className={`text-[22px] ${
+                  isHome && !isSticky  ? "text-white" : "text-black"
+                }`}
+              />
+            ) : (
+              <RxHamburgerMenu
+                className={`text-[25px] ${
+                  isHome && !isSticky ? "text-white" : "text-black"
+                }`}
+              />
+            )}
           </button>
           {isHome && (
             <Link href="/contact" className={quoteBtn}>
@@ -418,72 +425,24 @@ export default function Navbar2() {
         {/* Right: Get a Quote button (Desktop Only) */}
       </nav>
 
+      {/* MOBILE DROPDOWN (NEW) */}
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.div
-            key="sidebar"
-            initial={{ x: "66%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "66%" }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex "
-            style={{ zIndex: 1000 }}
+            className={`fixed ${isSticky ==true ?" top-[80px]":`${isHome == true?" top-[70px]":" top-[100px]"}`} left-0 w-full bg-white  lg:hidden shadow-xl overflow-hidden z-[999] `}
           >
-            {/* Left half: black overlay */}
-            <div
-              className={`${isNav ? "opacity-50 " : "opacity-0 "} w-1/3 bg-black`}
-              onClick={() => {
-                setIsSidebarOpen(false);
-                setIsNav(false);
-              }}
-            />
-
-            {/* Right half: white sidebar */}
-            <div className="bg-white w-2/3 z-20 p-4 pt-0 shadow-md flex flex-col relative">
-              {/* Close Button */}
-              <div className="mt-5  text-center flex justify-between">
-                <Link href="/">
-                  <Image
-                    src="/images/logo.svg"
-                    alt="All Spark Logo"
-                    width={150}
-                    height={150}
-                  />
-                </Link>
-                <button
-                  onClick={() => {
-                    setIsSidebarOpen(false);
-                    setIsNav(false);
-                  }}
-                  className="relative z-[999] "
-                >
-                  <RxCross1 className="text-[20px] text-black" />
-                </button>
-              </div>
-              <hr className="mt-3 " />
-              <nav className="flex flex-col relative  mt-5  z-20 bg-white">
+            <div className="p-5">
+              <nav className="flex flex-col relative  mt-5  z-20 bg-white ">
                 <ul className="space-y-2 text-gray-900 list-none">
                   <li className=" pb-3">
-                    <Link
-                      href="/"
-                      onClick={() => {
-                        setIsSidebarOpen(false);
-                        setIsNav(false);
-                      }}
-                    >
-                      Home
-                    </Link>
+                    <Link href="/">Home</Link>
                   </li>
                   <li className=" pb-3">
-                    <Link
-                      href="/about"
-                      onClick={() => {
-                        setIsSidebarOpen(false);
-                        setIsNav(false);
-                      }}
-                    >
-                      About
-                    </Link>
+                    <Link href="/about">About</Link>
                   </li>
 
                   {/* Services with smooth dropdown */}
@@ -524,10 +483,6 @@ export default function Navbar2() {
                                 <div key={index}>
                                   <Link
                                     href={{ pathname: item.path }}
-                                    onClick={() => {
-                                      setIsSidebarOpen(false);
-                                      setIsNav(false);
-                                    }}
                                     className={`flex items-center hover:bg-slate-100 rounded-[5px] hover:text-slate-900 transition duration-300 text-[15px] ${
                                       index === 0 ? "mt-[18px]" : ""
                                     }`}
@@ -544,26 +499,10 @@ export default function Navbar2() {
                   </li>
 
                   <li className=" pb-3">
-                    <Link
-                      href="/contact"
-                      onClick={() => {
-                        setIsSidebarOpen(false);
-                        setIsNav(false);
-                      }}
-                    >
-                      Contact
-                    </Link>
+                    <Link href="/contact">Contact</Link>
                   </li>
                   <li className="border-b pb-3">
-                    <Link
-                      href="/blogs"
-                      onClick={() => {
-                        setIsSidebarOpen(false);
-                        setIsNav(false);
-                      }}
-                    >
-                      Blogs
-                    </Link>
+                    <Link href="/blogs">Blogs</Link>
                   </li>
                   <li>
                     {/* CTA (lg+) */}
@@ -576,22 +515,13 @@ export default function Navbar2() {
                   </li>
                 </ul>
               </nav>
-              <div className="mb-4 text-xs border-t w-[90%] absolute bottom-2 z-10 ">
+              <div className="mb-4 text-xs border-t w-[90%] mt-[10px] z-10 mx-auto ">
                 <div className="max-w-[75%] mx-auto mt-3 text-center text-black">
                   © All Copyright {new Date().getFullYear()} by AllSpark
                   Technologies
                 </div>
               </div>
             </div>
-
-            {/* Overlay to close the sidebar when clicking outside */}
-            <div
-              className="flex-1"
-              onClick={() => {
-                setIsSidebarOpen(false);
-                setIsNav(false);
-              }}
-            />
           </motion.div>
         )}
       </AnimatePresence>

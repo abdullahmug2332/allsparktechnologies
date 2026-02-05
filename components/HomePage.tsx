@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Activity, ArrowRight } from "lucide-react";
-import Navbar3 from "./Navbar3";
 import {
   Carousel,
   CarouselContent,
@@ -14,6 +13,7 @@ import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import Navbar2 from "./Navbar2";
+import Navbar4 from "./Narbar4";
 
 interface heroSection {
   bg: string;
@@ -31,8 +31,9 @@ export default function HomePage({ hero }: { hero: heroSection[] }) {
     Autoplay({ delay: 10000, stopOnInteraction: false })
   );
   return (
-    <main className="min-h-screen max-w-[100vw] relative  text-white antialiased">
-      <Navbar2   />
+    <main className="min-h-screen max-w-[100vw]  relative  text-white antialiased">
+      {/* <Navbar2/> */}
+      <Navbar4/>
       <Carousel className=" h-[100%] min-h-screen " plugins={[plugin.current]} opts={{
         loop: true, // ✅ Makes the carousel loop infinitely
       }}>
@@ -42,7 +43,7 @@ export default function HomePage({ hero }: { hero: heroSection[] }) {
               key={index}
               className=" bg-cover bg-center bg-no-repeat w-[100vw] h-[100%] flex flex-col justify-center min-h-screen"
               style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url(${baseURL}/images/home/${data.bg})`,
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url(${baseURL}/images/home/${data.bg})`,
               }}
             >
               <div className="container mx-auto h-full">
