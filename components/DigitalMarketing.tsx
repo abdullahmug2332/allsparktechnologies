@@ -7,6 +7,7 @@ import NewServicePage from "./NewServicePage";
 import {ServicePageData} from "@/lib/types"
 import { getServiceDataQuery } from "@/utils/queries";
 import { useQuery } from "@tanstack/react-query";
+import Navbar4 from "./Narbar4";
 
 
 export default function DigitalMarketing({ service }: { service: string }) {
@@ -18,7 +19,7 @@ export default function DigitalMarketing({ service }: { service: string }) {
   return ( 
     <> 
       <Topnav />
-      <Navbar2 />
+      <Navbar4 />
       <NewServicePage servicePageData={servicePageData as ServicePageData} />
       <Footer />
     </>

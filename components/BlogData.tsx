@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { baseURL } from "@/API/baseURL";
 import Script from "next/script";
 import { getBlogDataQuery, getBlogsQuery } from "@/utils/queries";
+import Navbar4 from "./Narbar4";
 
 
 interface Blog {
@@ -32,7 +33,8 @@ const { data: BlogPageData } = useQuery(getBlogDataQuery());
   return (
     <div>
       <Topnav />
-      <Navbar2 />
+      {/* <Navbar2 /> */}
+      <Navbar4 />
       <Hero2Section
         title="Blogs"
         backgroundImage={`${baseURL}/images/blogs/${BlogPageData.heroimg}`}

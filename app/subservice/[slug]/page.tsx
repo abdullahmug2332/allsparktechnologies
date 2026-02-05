@@ -13,6 +13,7 @@ import Image from 'next/image'
 import ServicesContact from '@/components/ServicesContact'
 import axios from "axios"
 import { baseURL } from "@/API/baseURL"
+import Navbar4 from '@/components/Narbar4'
 
 
 type PageProps = {
@@ -61,7 +62,7 @@ export default async function Page({ params }: PageProps) {
     return (
         <>
             <Topnav />
-            <Navbar2 />
+            <Navbar4 />
 
             {/* Hero Section  */}
             <section

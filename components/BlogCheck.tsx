@@ -10,6 +10,7 @@ import Image from "next/image";
 import BlogFaqs from "@/components/BlogFaqs";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Navbar4 from "./Narbar4";
 
 // =========================
 // ✅ Metadata SSR
@@ -164,7 +165,8 @@ export default  function BlogCheck({ params }: {params: string}) {
   return (
     <div>
       <Topnav />
-      <Navbar2 />
+      {/* <Navbar2 /> */}
+      <Navbar4 />
 
       <div className="w-[95%] xl:w-[80%] mx-auto flex flex-col md:flex-row">
         {/* Content */}

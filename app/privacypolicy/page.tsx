@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Navbar4 from "@/components/Narbar4";
 import Navbar2 from "@/components/Navbar2";
 import Topnav from "@/components/Topnav";
 import React from "react";
@@ -49,7 +50,7 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Topnav />
-      <Navbar2 />
+      <Navbar4 />
       <section className="max-w-7xl mx-auto px-4 my-8 py-8">
         <div className="space-y-6">
           <h1 className="text-3xl font-bold text-gray-900 text-center">

@@ -11,6 +11,7 @@ import CoreValuesSemiCircle from "@/components/CoreValuesSemiCircle";
 import React, { Suspense } from "react";
 import { baseURL } from "@/API/baseURL";
 import Script from "next/script";
+import Navbar4 from "./Narbar4";
 
 export interface aboutData {
   heroimg: string;
@@ -45,7 +46,8 @@ const AboutClient = ({ aboutData }: { aboutData: aboutData }) => {
   return (
     <>
       <Topnav />
-      <Navbar2 />
+      {/* <Navbar2 /> */}
+      <Navbar4 />
       <div className="w-[100vw]  overflow-x-hidden">
         <Hero2Section
           title="About"

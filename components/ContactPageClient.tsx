@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import Script from "next/script";
 import { baseURL } from "@/API/baseURL";
+import Navbar4 from "./Narbar4";
 
 export interface ContactMethod {
   label: string;
@@ -36,7 +37,8 @@ const ContactPageClient = ({ contactData }: { contactData: ContactPageData }) =>
   return (
     <>
       <Topnav />
-      <Navbar2 />
+      {/* <Navbar2 /> */}
+      <Navbar4 />
       <div className="w-[100vw] overflow-x-hidden">
 
         <Hero2Section

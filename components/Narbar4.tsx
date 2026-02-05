@@ -14,7 +14,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-export default function Navbar2() {
+export default function Navbar4() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -478,12 +478,13 @@ export default function Navbar2() {
                           className="overflow-hidden pl-2 text-xs text-gray-700"
                         >
                           <div className="mt-2">
-                            <div className="space-y-6 !list-unstyled h-[250px] overflow-scroll">
+                            <div className="space-y-1 !list-unstyled h-[250px] overflow-scroll">
                               {mobileServiceLinks.map((item, index) => (
                                 <div key={index}>
                                   <Link
                                     href={{ pathname: item.path }}
-                                    className={`flex items-center hover:bg-slate-100 rounded-[5px] hover:text-slate-900 transition duration-300 text-[15px] ${
+                                    onClick={()=>setIsSidebarOpen(false)}
+                                    className={`flex items-center hover:bg-slate-100 rounded-[5px] hover:text-slate-900 transition duration-300 text-[15px] py-[10px] px-[10px] ${
                                       index === 0 ? "mt-[18px]" : ""
                                     }`}
                                   >
