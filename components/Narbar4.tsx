@@ -70,7 +70,7 @@ export default function Navbar4() {
   `}
       >
         <div
-          className={`flex-1 flex py-5 lg:py-3 items-center justify-between lg:justify-around  px-[20px] lg:px-0 navborder `}
+          className={`flex-1 flex py-5 lg:py-2 items-center justify-between lg:justify-around  px-[20px] lg:px-0 navborder `}
         >
           {/* Left: Logo */}
           <div className="flex items-center space-x-2">
